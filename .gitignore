@@ -1,5 +1,32 @@
 # Created by https://www.gitignore.io/api/node
 
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Ruby/Rails
+*.rbc
+capybara-*.html
+coverage/
+spec/tmp
+spec/examples.txt
+rerun.txt
+pickle-email-*.html
+tmp/
+vendor/bundle
+public/assets
+public/packs
+public/packs-test
+node_modules/
+yarn-error.log
+byebug_history
+
+
 .DS_Store
 
 ### Node ###
@@ -36,10 +63,40 @@ jspm_packages
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
+/db/*.sqlite3*
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
 /tmp
+
+/config/master.key
+/.env
+/.env.*
+/.byebug_history
+/.pry_history
+/.yardoc
+/doc/
+/coverage/
+/tmp/
+/spec/reports/
+/spec/examples.txt
+/public/assets/
+/public/packs/
+/public/packs-test/
+/storage/
+/sorbet/
+/yarn-debug.log*
+/yarn-error.log*
+/npm-debug.log*
+/log/*.log
+/log/*.pid
+/log/*.gz
+/log/*.old
+/log/*.out
+/log/*.err
+config/credentials.yml.enc
+config/secrets.yml
+log/development.log
+log/test.log
