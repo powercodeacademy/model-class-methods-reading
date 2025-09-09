@@ -2,8 +2,8 @@
 
 ## Objectives
 
-1.  Know when to use a model class method
-2.  Create model class methods for custom queries
+1. Know when to use a model class method
+2. Create model class methods for custom queries
 
 ## Lesson
 
@@ -11,11 +11,11 @@ We're gonna keep working on our blog application and adding more
 features, so make sure to follow along and try out the code for yourself as
 we go!
 
-Make sure to run `rake db:seed` to get some starter posts and authors.
+Make sure to run `bin/rails db:seed` to get some starter posts and authors.
 You might be surprised to see the big names that definitely wrote these
 example blog posts!
 
-#### Filtering Posts by Author
+### Filtering Posts by Author
 
 We have our list of blog posts, which is great, but our readers would
 like to be able to filter the list by author. Let's do what every
@@ -32,7 +32,7 @@ filtering:
 <!-- add this new code above the @posts.each loop -->
 <div>
   <h3>Filter posts:</h3>
-  <%= form_tag("/posts", method: "get") do %>
+  <%= form_with(url: "/posts", method: :get, local: true) do %>
     <%= select_tag "author", options_from_collection_for_select(Author.all, "id", "name"), include_blank: true %>
     <%= submit_tag "Filter" %>
   <% end %>
@@ -102,7 +102,7 @@ Let's get back into our view and add the new filter to our form:
 ```erb
 <!-- app/views/posts/index.html.erb -->
 
-<%= form_tag("/posts", method: "get") do %>
+<%= form_with(url: "/posts", method: :get, local: true) do %>
   <%= select_tag "author", options_from_collection_for_select(Author.all, "id", "name"), include_blank: true %>
 
   <!-- new code -->
@@ -132,7 +132,7 @@ view looks like this:
   ...
 ```
 
-Reload `/posts` and try it out. Our readers can filter by author, or 
+Reload `/posts` and try it out. Our readers can filter by author, or
 they can filter by date, or they can have it all. We've pleased everyone!
 
 **Just Between Us:** We haven't pleased everyone because someone will
@@ -168,7 +168,7 @@ before the `<h1>` so that it looks like this:
 <h1>Believe It Or Not I'm Blogging On Air</h1>
 <div>
   <h3>Filter posts:</h3>
-  <%= form_tag("/posts", method: "get") do %>
+  <%= form_with(url: "/posts", method: :get, local: true) do %>
     <%= select_tag "author", options_from_collection_for_select(@authors, "id", "name"), include_blank: true %>
     <%= select_tag "date", options_for_select(["Today", "Old News"]), include_blank: true %>
     <%= submit_tag "Filter" %>
@@ -354,4 +354,3 @@ We've taken a look at a few different ways to create some features, but
 the big takeaway is this: by considering the separation of concerns,
 sticking to MVC, and using class methods on our models, we were ultimately
 able to implement those features in a clean, well-organized way.
-
